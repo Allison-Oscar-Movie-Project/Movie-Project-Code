@@ -59,16 +59,32 @@ function movieData(url, method) {
 movieData(serverUrl, "GET")
 
 $(function () {
-    $("#add").bind('click', function (event) {
+    $("#submit_movie").click( function (event) {
         // using this page stop being refreshing
         event.preventDefault();
 
-        $.ajax({
-            type: 'Patch',
-            url: serverUrl,
-            data: $('#movieName'),
+        $.ajax(serverUrl,{
+            type: 'POST',
+            data: {
+                title: $("#movieName").val()
+            }
 
 
-        });
+        }).done(function (data){
+            $("#movieName").val("")
+
+            $('#display1').append(data.title);
+        })
     });
 });
+
+// $document.ready(function (){
+//     $('form').submit(function (event){
+//         event.preventDefault()
+//
+//         var firstname = document.getElementById("").value
+//         var lastname = document.getElementById("").value
+//
+//         $.post('')
+//     })
+// })
