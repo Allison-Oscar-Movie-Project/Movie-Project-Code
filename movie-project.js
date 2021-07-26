@@ -57,3 +57,18 @@ function movieData(url, method) {
 }
 
 movieData(serverUrl, "GET")
+
+$(function () {
+    $("#add").bind('click', function (event) {
+        // using this page stop being refreshing
+        event.preventDefault();
+
+        $.ajax({
+            type: 'Patch',
+            url: serverUrl,
+            data: $('#movieName'),
+
+
+        });
+    });
+});
