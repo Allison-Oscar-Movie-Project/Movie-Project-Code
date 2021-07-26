@@ -25,3 +25,35 @@ function AJAX(url, method = "GET", data){
 AJAX(serverUrl)
     .then(data => console.log(data))
 
+
+
+function MovieData(url, method) {
+    $.get(`https://allison-oscar-movie-project-assigment.glitch.me/movies`, {
+        type: method,
+        dataType: "json",
+        url: url,
+
+    }).done(function (movie) {
+        var html = "";
+        $("#Display1").empty();
+        movie.forEach(function (day, index) {
+
+                html = `<div id = "full">
+                 
+                  
+                  <p>Title: ${movie.title}</p>
+                    <hr>
+                  <p>Rating: ${movie.rating}</p>
+                    <hr>
+                  <p>Description: ${movie.plot}</p>
+                    <hr>
+                  <p>Year: ${movie.year}</p>
+                    <hr>
+                  <p>Director: ${movie.director}</p
+              </div>`;
+                $('#Display1').append(html);
+
+        })
+    })
+}
+

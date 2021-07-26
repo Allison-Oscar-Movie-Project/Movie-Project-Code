@@ -1,0 +1,8 @@
+#display1{
+    align-content: center;
+    width: 1200px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+
+}
