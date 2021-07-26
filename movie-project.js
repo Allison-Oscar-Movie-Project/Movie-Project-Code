@@ -35,23 +35,27 @@ function movieData(url, method) {
     }).done(function (movie) {
         var html = "";
         $("#display1").empty();
-        movie.forEach(function (movie, index) {
-            if (index < 5) {
+        movie.forEach(function (movie) {
+
                 html = `<div id = "full">
                  
                
-                  <p>Title: ${movie.title}</p>
+                  <p id = "movie-title-${movie.id}">Title: ${movie.title}</p>
                     <hr>
-                  <p>Rating: ${movie.rating}</p>
+                  <p id = "movie-rating-${movie.id}">Rating: ${movie.rating}</p>
                     <hr>
-                  <p>Description: ${movie.plot}</p>
+                  <p id = "movie-desc-${movie.id}">Description: ${movie.plot}</p>
                     <hr>
-                  <p> ${movie.year}</p>
+                  <pid = "movie-year-${movie.id}"> ${movie.year}</p>
                     <hr>
-                  <p>Director: ${movie.director}</p
-              </div>`;
+                  <pid = "movie-director-${movie.id}">Director: ${movie.director}</p
+                  <hr>
+                  <input name="submit" type="submit" data-id=${movie.id} class= "editMovie">
+                  
+                  <input name = "submit" type="submit" >
+              </div>`
+
                 $('#display1').append(html);
-            }
         })
     })
 }
@@ -60,7 +64,7 @@ movieData(serverUrl, "GET")
 
 $(function () {
     $("#submit_movie").click( function (event) {
-        // using this page stop being refreshing
+
         event.preventDefault();
 
         $.ajax(serverUrl,{
@@ -77,19 +81,25 @@ $(function () {
             $("#movieRating").val("")
             $("#movieDes").val("")
 
-            $('#display1').append(data.title);
         })
     });
 });
 
+$(function clickEdit () {
+    $(document).on('click','.editMovie',function(){
+   // $(".editMovie").click( function (event) {
+      //  event.preventDefault();
+        $(this).parent().attr('contenteditable', 'true');
+ var movieId = $(this).attr("data-id")
+        $.ajax(serverUrl + "/" + movieId,{
+            type: 'PATCH',
+            data: {
+                title: $(`#movie-title-${movieId}`).val(),
+                rating: $(`#movie-rating-${movieId}`).val(),
+                plot: $(`#movie-desc-${movieId}`).val()
+            }
+        })
+        console.log(divValue)
+    });
+});
 
-// $document.ready(function (){
-//     $('form').submit(function (event){
-//         event.preventDefault()
-//
-//         var firstname = document.getElementById("").value
-//         var lastname = document.getElementById("").value
-//
-//         $.post('')
-//     })
-// })

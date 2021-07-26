@@ -26,3 +26,10 @@
     justify-content: center;
     align-items: center;
 }
+
+#edit{
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    bottom: 1em;
+}
