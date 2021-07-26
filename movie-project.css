@@ -1,8 +1,20 @@
 #display1{
-    align-content: center;
-    width: 1200px;
     padding: 10px;
     margin: 10px;
     display: flex;
 
+}
+
+#full {
+    display: inline;
+    width: auto;
+    padding: 10px;
+    border: 1px solid Black;
+    margin: 10px;
+}
+
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

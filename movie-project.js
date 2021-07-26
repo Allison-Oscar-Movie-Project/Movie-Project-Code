@@ -27,17 +27,16 @@ AJAX(serverUrl)
 
 
 
-function MovieData(url, method) {
+function movieData(url, method) {
     $.get(`https://allison-oscar-movie-project-assigment.glitch.me/movies`, {
         type: method,
         dataType: "json",
         url: url,
-
     }).done(function (movie) {
         var html = "";
-        $("#Display1").empty();
-        movie.forEach(function (day, index) {
-
+        $("#display1").empty();
+        movie.forEach(function (movie, index) {
+            if (index < 5) {
                 html = `<div id = "full">
                  
                   
@@ -47,13 +46,14 @@ function MovieData(url, method) {
                     <hr>
                   <p>Description: ${movie.plot}</p>
                     <hr>
-                  <p>Year: ${movie.year}</p>
+                  <p> ${movie.year}</p>
                     <hr>
                   <p>Director: ${movie.director}</p
               </div>`;
-                $('#Display1').append(html);
-
+                $('#display1').append(html);
+            }
         })
     })
 }
 
+movieData(serverUrl, "GET")
