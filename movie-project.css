@@ -13,6 +13,14 @@
     margin: 10px;
 }
 
+#addedMap {
+    display: inline;
+    width: auto;
+    padding: 10px;
+    border: 1px solid Black;
+    margin: 10px;
+}
+
 .add {
     display: flex;
     justify-content: center;

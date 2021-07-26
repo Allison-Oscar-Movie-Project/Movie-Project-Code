@@ -39,7 +39,7 @@ function movieData(url, method) {
             if (index < 5) {
                 html = `<div id = "full">
                  
-                  
+               
                   <p>Title: ${movie.title}</p>
                     <hr>
                   <p>Rating: ${movie.rating}</p>
@@ -66,17 +66,22 @@ $(function () {
         $.ajax(serverUrl,{
             type: 'POST',
             data: {
-                title: $("#movieName").val()
+                title: $("#movieName").val(),
+                rating: $("#movieRating").val(),
+                plot: $("#movieDes").val()
             }
 
 
         }).done(function (data){
             $("#movieName").val("")
+            $("#movieRating").val("")
+            $("#movieDes").val("")
 
             $('#display1').append(data.title);
         })
     });
 });
+
 
 // $document.ready(function (){
 //     $('form').submit(function (event){
