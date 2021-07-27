@@ -50,8 +50,8 @@ function movieData() {
                   <pid = "movie-director-${movie.id}">Director: ${movie.director}</p
                   <hr>
                   <input name="submit" type="submit" value = "edit"  data-id=${movie.id} class= "editMovie">
-                  
-               
+                  <hr>
+               <input name="submit" type="submit" value = "delete"  data-id=${movie.id} class= "deleteMovie">
               </div>`
 
                 $('#display1').append(html);
@@ -85,12 +85,12 @@ $(function () {
 });
 
 $(function clickEdit () {
-    $(document).on('click','.editMovie',function(event){
-   // $(".editMovie").click( function (event) {
-       event.preventDefault();
+    $(document).on('click', '.editMovie', function (event) {
+        // $(".editMovie").click( function (event) {
+        event.preventDefault();
 
         var movieId = $(this).attr("data-id")
-        const currentMovie = localMovies.filter(function(movie){
+        const currentMovie = localMovies.filter(function (movie) {
             return movie.id == movieId
         })[0];
         console.log(currentMovie)
@@ -102,18 +102,29 @@ $(function clickEdit () {
       <input name="saveChanges${movieId}" type="submit" value="Submit" id="submit_movie${movieId}">
     </form>`
         $(this).parent().html(formToEdit);
-        $(`#submit_movie${movieId}`).click(function(event){
+        $(`#submit_movie${movieId}`).click(function (event) {
             event.preventDefault()
-         const newMovieObject = {
-             title: $(`#movieNameToEdit${movieId}`).val(),
-             rating: $(`#movieRatingToEdit${movieId}`).val(),
-            plot: $(`#movieDesToEdit${movieId}`).val()
-         }
-            $.ajax(serverUrl + "/" + movieId,{
+            const newMovieObject = {
+                title: $(`#movieNameToEdit${movieId}`).val(),
+                rating: $(`#movieRatingToEdit${movieId}`).val(),
+                plot: $(`#movieDesToEdit${movieId}`).val()
+            }
+            $.ajax(serverUrl + "/" + movieId, {
                 type: 'PATCH',
                 data: newMovieObject
             }).done(movieData)
         })
     });
-});
+    $(document).on('click', '.deleteMovie', function (event) {
+        event.preventDefault();
+        var movieId = $(this).attr("data-id")
+        const currentMovie = localMovies.filter(function (movie) {
+            return movie.id == movieId
+        })[0];
+        $.ajax(serverUrl + "/" + movieId, {
+            type: 'DELETE',
+            data: currentMovie
+        }).done(movieData)
+    })
+})
 
