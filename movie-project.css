@@ -33,3 +33,9 @@
     padding: 1em;
     bottom: 1em;
 }
+
+#load{
+    display: flex;
+   justify-content: center;
+    padding: 1em;
+}
