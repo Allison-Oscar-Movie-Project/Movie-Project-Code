@@ -25,17 +25,16 @@ function AJAX(url, method = "GET", data){
 AJAX(serverUrl)
     .then(data => console.log(data))
 
+let localMovies = [];
 
-
-function movieData(url, method) {
+function movieData() {
     $.get(`https://allison-oscar-movie-project-assigment.glitch.me/movies`, {
-        type: method,
         dataType: "json",
-        url: url,
-    }).done(function (movie) {
+    }).done(function (movies) {
+        localMovies = movies;
         var html = "";
         $("#display1").empty();
-        movie.forEach(function (movie) {
+        movies.forEach(function (movie) {
 
                 html = `<div id = "full">
                  
@@ -50,9 +49,9 @@ function movieData(url, method) {
                     <hr>
                   <pid = "movie-director-${movie.id}">Director: ${movie.director}</p
                   <hr>
-                  <input name="submit" type="submit" data-id=${movie.id} class= "editMovie">
+                  <input name="submit" type="submit" value = "edit"  data-id=${movie.id} class= "editMovie">
                   
-                  <input name = "submit" type="submit" >
+               
               </div>`
 
                 $('#display1').append(html);
@@ -86,20 +85,35 @@ $(function () {
 });
 
 $(function clickEdit () {
-    $(document).on('click','.editMovie',function(){
+    $(document).on('click','.editMovie',function(event){
    // $(".editMovie").click( function (event) {
-      //  event.preventDefault();
-        $(this).parent().attr('contenteditable', 'true');
- var movieId = $(this).attr("data-id")
-        $.ajax(serverUrl + "/" + movieId,{
-            type: 'PATCH',
-            data: {
-                title: $(`#movie-title-${movieId}`).val(),
-                rating: $(`#movie-rating-${movieId}`).val(),
-                plot: $(`#movie-desc-${movieId}`).val()
-            }
+       event.preventDefault();
+
+        var movieId = $(this).attr("data-id")
+        const currentMovie = localMovies.filter(function(movie){
+            return movie.id == movieId
+        })[0];
+        console.log(currentMovie)
+        let formToEdit = `
+         <form>
+      <label for="movieNameToEdit${movieId}"></label><input type="text" value = "${currentMovie.title}" name="movieNameToEdit${movieId}" id="movieNameToEdit${movieId}" placeholder="Name">
+     <label for="movieRatingToEdit${movieId}"></label><input type="text" value = "${currentMovie.rating}" name="movieRatingToEdit${movieId}" id="movieRatingToEdit${movieId}" placeholder="Rating">
+      <label for="movieDesToEdit${movieId}"></label><input type="text" value = "${currentMovie.plot}" name="movieDesToEdit${movieId}" id="movieDesToEdit${movieId}" placeholder="Description">
+      <input name="saveChanges${movieId}" type="submit" value="Submit" id="submit_movie${movieId}">
+    </form>`
+        $(this).parent().html(formToEdit);
+        $(`#submit_movie${movieId}`).click(function(event){
+            event.preventDefault()
+         const newMovieObject = {
+             title: $(`#movieNameToEdit${movieId}`).val(),
+             rating: $(`#movieRatingToEdit${movieId}`).val(),
+            plot: $(`#movieDesToEdit${movieId}`).val()
+         }
+            $.ajax(serverUrl + "/" + movieId,{
+                type: 'PATCH',
+                data: newMovieObject
+            }).done(movieData)
         })
-        console.log(divValue)
     });
 });
 
