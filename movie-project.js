@@ -47,7 +47,7 @@ function fad () {
                     <hr>
                   <p id = "movie-desc-${movie.id}">Description: ${movie.plot}</p>
                     <hr>
-                  <pid = "movie-year-${movie.id}"> ${movie.year}</p>
+                  <pid = "movie-year-${movie.id}">Year: ${movie.year}</p>
                     <hr>
                   <pid = "movie-director-${movie.id}">Director: ${movie.director}</p
                   <hr>
