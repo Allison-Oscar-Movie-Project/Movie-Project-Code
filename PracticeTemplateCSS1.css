@@ -51,11 +51,15 @@ body{
 
 
 
-
+.navbar{
+    padding: 0;
+}
 
 #main-nav{
     background-color: #ffc62a;
-    padding: 2em;
+    padding: 1em;
+
+
 }
 
 .wrap {
