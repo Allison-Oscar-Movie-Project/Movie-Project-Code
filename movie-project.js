@@ -37,8 +37,8 @@ function fad () {
             var html = "";
             $("#display1").empty();
             movies.forEach(function (movie) {
-
-                html = `<div id = "full">
+console.log("hello")
+                html = `<div id = "full" class="card">
                  
                
                   <p id = "movie-title-${movie.id}">Title: ${movie.title}</p>

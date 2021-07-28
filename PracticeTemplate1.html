@@ -2,75 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Movies</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="PracticeTemplateCSS1.css">
+    <link rel="stylesheet" href="whatisthisthing.scss">
 </head>
+<div class="navbar navbar-expand-sm  ">
+<div id="main-nav" class="navbar-collapse ">
+    <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item"><label for="movieName"></label><input type="text" name="movieName" id="movieName" placeholder="Name"></li>
+        <li class="nav-item"><label for="movieRating"></label><input type="text" name="movieRating" id="movieRating" placeholder="Rating"></li>
+        <li class="nav-item"><label for="movieDes"></label><input type="text" name="movieDes" id="movieDes" placeholder="Description"></li>
+        <li class="nav-item"><div class="wrap">
+            <button class="button">Submit</button>
+        </div></li>
+    </ul>
+</div>
+</div>
 <body>
-<section class="team-boxed">
-    <div class="container">
+<section>
+<!--    <div class="container">-->
 
-        <div class="jumbotron">
-            <h1>Your favorite Movies</h1>
-            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <div class="card m-auto" style="max-width:850px">
-                        <div class="card-body">
-                            <form class="d-flex align-items-center"><i class="fas fa-search d-none d-sm-block h4 text-body m-0"></i><input type="search" class="form-control form-control-lg flex-shrink-1 form-control-borderless" placeholder="Search topics or keywords" name="searchbar" /><button class="btn btn-success btn-lg" type="submit">Search</button></form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--        <div class="jumbotron" id="theJumbotron">-->
+<!--            <form id = "add2"  method="post" >-->
+<!--                <label for="movieName"></label><input type="text" name="movieName" id="movieName" placeholder="Name">-->
+<!--                <label for="movieRating"></label><input type="text" name="movieRating" id="movieRating" placeholder="Rating">-->
+<!--                <label for="movieDes"></label><input type="text" name="movieDes" id="movieDes" placeholder="Description">-->
+<!--                <input name="submit" type="submit" value="Submit" id="submit_movie">-->
+<!--            </form>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+
+    <div id="load">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
-        <div class="row people">
-            <div class="col-md-6 col-lg-4 item">
-                <div id="Box1" class="box"><img class="img-thumbnail" id="pic1" src="Images/commando4.jpeg" />
-                    <h3 class="name">RAMBO</h3>
-                    <p class="title">Action</p>
-                    <form>
-                        <input type="text" id="fname" name="fname">
-                    <p class="description">All hell broke loose in the City of blah blah</p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                    </form>
-                </div>
-                <div id="Box4" class="box"><img class="img-thumbnail" id="pic2"  src="Images/download (1).jpeg" />
-                    <h3 class="name">HARRY POTTER</h3>
-                    <p class="title">Musician</p>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 item">
-                <div id="Box2" class="box"><img class="img-thumbnail" id="pic3" src="Images/harry-potter-streaming-guide.jpeg" />
-                    <h3 class="name">SPIRITED AWAY</h3>
-                    <p class="title">Artist</p>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                </div>
-                <div id="Box5" class="box"><img class="img-thumbnail" id="pic4" src="Images/Let_Me_In_Poster.jpeg" />
-                    <h3 class="name">THE NIGHTMARE BEFORE CHRISTMAS</h3>
-                    <p class="title">Artist</p>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 item">
-                <div id="Box3" class="box"><img class="img-thumbnail" id="pic5" src="Images/spirtted.jpg" />
-                    <h3 class="name">LET ME IN</h3>
-                    <p class="title">Stylist</p>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                </div>
-                <div id="Box6" class="box"><img class="img-thumbnail" id="pic6" src="Images/sucker.jpg" />
-                    <h3 class="name">SUCKER PUNCH</h3>
-                    <p class="title">Stylist</p>
-                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa. </p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
-                </div>
-            </div>
+        <div class="spinner-grow text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
-</section>
+
+
+
+<div id="display1" >
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="PracticeScript1.js"></script>
 </body>
 </html>
