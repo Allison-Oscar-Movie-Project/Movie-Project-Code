@@ -46,17 +46,21 @@ function fad () {
                   <p id = "movie-title-${movie.id}">Title: ${movie.title}</p>
                     <hr>
                     
+                     <img id = "movie-poster-${movie.id}" src= "${movie.poster}" alt="image" height="400px" width="300px"> 
+                    <hr>
   
                   <p id = "movie-rating-${movie.id}">Rating: ${movie.rating}</p>
                     <hr>
                   <p id = "movie-desc-${movie.id}">Description: ${movie.plot}</p>
                     <hr>
-                  <pid = "movie-year-${movie.id}">Year: ${movie.year}</p>
+                  <p id = "movie-year-${movie.id}">Year: ${movie.year}</p>
                     <hr>
-                  <pid = "movie-director-${movie.id}">Director: ${movie.director}</p
+                  <p id = "movie-director-${movie.id}">Director: ${movie.director}</p>
+                  <hr>
+                  <p id = "movie-genre-${movie.id}">Genre: ${movie.genre}</p>
                   <hr>
                   <input name="submit" type="submit" value = "edit"  data-id=${movie.id} class= "editMovie">
-                  <hr>
+                  
                <input name="submit" type="submit" value = "delete"  data-id=${movie.id} class= "deleteMovie">
               </div>`
 
@@ -107,6 +111,8 @@ function fad () {
       <label for="movieDesToEdit${movieId}"></label><input type="text" value = "${currentMovie.plot}" name="movieDesToEdit${movieId}" id="movieDesToEdit${movieId}" placeholder="Description">
             <label for="movieYearToEdit${movieId}"></label><input type="text" value = "${currentMovie.year}" name="movieDesToEdit${movieId}" id="movieYearToEdit${movieId}" placeholder="Year">
       <label for="movieDirToEdit${movieId}"></label><input type="text" value = "${currentMovie.director}" name="movieDesToEdit${movieId}" id="movieDirToEdit${movieId}" placeholder="Director">
+      <label for="movieGenreToEdit${movieId}"></label><input type="text" value = "${currentMovie.genre}" name="movieGenreToEdit${movieId}" id="movieGenreToEdit${movieId}" placeholder="Genre">
+
 
       <input name="saveChanges${movieId}" type="submit" value="Submit" id="submit_movie${movieId}">
     </form>`
@@ -118,7 +124,8 @@ function fad () {
                     rating: $(`#movieRatingToEdit${movieId}`).val(),
                     plot: $(`#movieDesToEdit${movieId}`).val(),
                     year: $(`#movieYearToEdit${movieId}`).val(),
-                    director: $(`#movieDirToEdit${movieId}`).val()
+                    director: $(`#movieDirToEdit${movieId}`).val(),
+                    genre: $(`#movieGenreToEdit${movieId}`).val()
                 }
                 $.ajax(serverUrl + "/" + movieId, {
                     type: 'PATCH',
