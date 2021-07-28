@@ -47,7 +47,7 @@ function fad () {
                     <hr>
                     
   
-                  <p id = "movie-rating-${movie.id}">Rating: ${movie.rating} + </p>
+                  <p id = "movie-rating-${movie.id}">Rating: ${movie.rating}</p>
                     <hr>
                   <p id = "movie-desc-${movie.id}">Description: ${movie.plot}</p>
                     <hr>
